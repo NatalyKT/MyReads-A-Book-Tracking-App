@@ -11,10 +11,9 @@ class SearchBooks extends React.Component {
   }
 
   updateQuery(query) {
-    this.setState({ books: [] })
-
+    
     if (query === '') {
-      return
+     return this.setState({ books: [] });
     }
 
     BooksAPI.search(query).then((result) => {
@@ -55,9 +54,9 @@ class SearchBooks extends React.Component {
       let newBook = this.state.books.filter((newBook) => newBook.id === book.id)[0]
       this.props.addBook(newBook)
     }
-
-    this.props.onUpdateShelf(book, shelf)
-  }
+    else {
+      this.props.onUpdateShelf(book, shelf);
+    }
 
   render() {
     return(
